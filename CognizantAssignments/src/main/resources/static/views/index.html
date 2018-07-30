@@ -1,0 +1,42 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="utf-8" />
+<title>Cognizant Assignments</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+<div ng-show="normalHeader" ng-include="mainHeader.show && 'views/header.html' || 'views/loginHeader.html' "></div>
+<div ng-show="errorHeader" ng-include="'views/errorLoginHeader.html'"></div>
+
+<div class="jumbotron">
+<div class="container">
+<div class="header"></div>
+<div class="col-sm-8 col-sm-offset-2">
+<div ng-view></div>
+</div>
+</div>
+</div>
+<div ng-include="views/footer.html"></div>
+<script src="lib/jquery-3.1.1.min.js"></script>
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-route.min.js"></script>
+<script src="lib/angular-cookies.min.js"></script>
+<script src="lib/ngStorage.min.js"></script>
+<script src="lib/includeHtml.js"></script>
+<script src="js/app.js"></script>
+<script src="js/loginController.js"></script>
+<script src="js/mainController.js"></script>
+<script src="js/errorController.js"></script>
+<script src="js/errorLoginController.js"></script>
+<script src="js/errorDataFactory.js"></script>
+<script src="js/assignmentFEController.js"></script>
+<script src="js/assignmentsController.js"></script>
+<script src="js/assignmentFEDataFactory.js"></script>
+<script src="js/assignmentDataFactory.js"></script>
+<script src="js/assignmentFEResultController.js"></script>
+<script src="js/assignmentResultController.js"></script>
+</body>
+</html>

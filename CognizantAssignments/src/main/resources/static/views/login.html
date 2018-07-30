@@ -1,0 +1,31 @@
+<!--login.html-->
+<br /><br /><br /><br /><br /><br />
+<div align="center">
+	<form name="loginForm" role="form">
+		<table>
+			<thead >
+				<tr>
+					<th colspan="2" align="center">Assignments Login</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td width="50%"><label for="username" >Username</label></td>
+					<td width="50%"><input type="text" name="username" id="username"
+						ng-model="vm.userName" required /></td>
+				</tr>
+				<tr>
+					<td width="50%"><label for="password" >Password</label></td>
+					<td width="50%"><input type="password" name="password" id="password"
+						ng-model="vm.password" required /></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="buttonTD">
+						<button ng-click="doLogin()" 
+							class="button">Login</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>

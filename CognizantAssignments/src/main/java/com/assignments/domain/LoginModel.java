@@ -1,0 +1,36 @@
+package com.assignments.domain;
+
+/**
+ * @author Jagadish Anala
+ *
+ */
+public class LoginModel {
+	private String userName;
+	private char[] password;
+	/**
+	 * @return the userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
+	/**
+	 * @param userName the userName to set
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	/**
+	 * @return the password
+	 */
+	public char[] getPassword() {
+		return password;
+	}
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(char[] password) {
+		this.password = password;
+	}
+
+	
+}

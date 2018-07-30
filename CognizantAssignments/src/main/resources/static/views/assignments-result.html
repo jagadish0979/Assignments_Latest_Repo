@@ -1,0 +1,34 @@
+<div class="table-title">
+<h2>Rabobank Customer Statement Processor</h2>
+</div>
+<div id="searchDiv">
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Filter Data</td>
+<th class="text-left"><input type="text" ng-model="searchInput"/></td>
+</tr>
+</thead>
+</table>
+</div>
+<br/>
+<div class="table-title">
+<h2>Failed Transactions</h2>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Transaction Reference</th>
+<th class="text-left">Description</th>
+<th class="text-left">Failed Reason</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+  <tr ng-repeat="x in data | filter : searchInput track by $index">
+  <td class="text-left">{{x.transactionReference}}</td>
+  <td class="text-left">{{x.description}}</td>
+  <td class="text-left">{{x.failedReason}}</td>  
+  </tr>
+</tbody>  
+</table>
+
