@@ -54,7 +54,7 @@ angular
 								.set(lines);
 								console.log("lines [ "
 										+ lines + " ]");
-								$window.location.href = '/assignments/#!/assignments-result';
+								$window.location.href = '#!assignments-result';
 							},
 							function(errResponse) {
 								console
@@ -70,7 +70,7 @@ angular
 								};
 								errorDataFactory
 								.set(errorObject);
-								$window.location.href = '/assignments/#!/error';
+								$window.location.href = '#!error';
 							});
 				}
 			}

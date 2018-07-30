@@ -1,6 +1,6 @@
 package com.assignments.service.impl;
 
-import static org.junit.Assert.assertFalse;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.assignments.CognizantAssignments.CognizantAssignmentsApplicationTests;
 import com.assignments.domain.LoginModel;
+import com.assignments.exception.LoginException;
 import com.assignments.service.LoginService;
 
 /**
@@ -29,7 +30,7 @@ public class LoginServiceImplTest extends CognizantAssignmentsApplicationTests {
 		LoginModel loginModel = new LoginModel();
 		loginModel.setUserName("admin");
 		loginModel.setPassword("admin".toCharArray());
-		assertTrue(loginService.validateLogin(loginModel));
+		assertTrue(loginService.validateLogin(loginModel) instanceof LoginModel);
 	}
 
 	@Test
@@ -37,6 +38,7 @@ public class LoginServiceImplTest extends CognizantAssignmentsApplicationTests {
 		LoginModel loginModel = new LoginModel();
 		loginModel.setUserName("admin");
 		loginModel.setPassword("1234".toCharArray());
-		assertFalse(loginService.validateLogin(loginModel));
+		assertThatThrownBy(() -> loginService.validateLogin(loginModel))
+		.isInstanceOf(LoginException.class);
 	}
 }

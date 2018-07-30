@@ -13,14 +13,15 @@ angular
     	    };    
     	
 	    $scope.doLogin = function () {
+	        if ($scope.loginForm.$valid) {  
             var dataObject = { userName : vm.userName, password : Array.from(vm.password)};
             $http.post(CONSTANTS.loginURL,dataObject).then(
             		function (response) {
-            			$rootScope.userName = vm.userName;
+            			var data = response.data;
             			$rootScope.normalHeader = true;
             			$rootScope.errorHeader = false;            			
-            			var data = response.data;
-            			
+                        window.sessionStorage["userDetails"] = JSON.stringify(data);
+                        $rootScope.userDetails = JSON.parse(window.sessionStorage["userDetails"]);
             			$location.path(data.url);
 		            },
 		            function (error) {
@@ -35,6 +36,6 @@ angular
         			    $location.path("/error_login");
 		            }	
 	            )
-	            
+	        } 
 	    }	
 });

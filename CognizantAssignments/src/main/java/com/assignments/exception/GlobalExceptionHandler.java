@@ -2,7 +2,6 @@ package com.assignments.exception;
 
 import java.util.Date;
 
-import javax.security.auth.login.LoginException;
 import javax.xml.bind.UnmarshalException;
 
 import org.apache.logging.log4j.LogManager;

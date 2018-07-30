@@ -7,6 +7,11 @@ $routeProvider
     templateUrl : "/assignments/views/login.html",
 	controllerAs: 'vm'
 })
+.when("/logout", {
+	controller: 'LogoutController',
+    templateUrl : "/assignments/views/logout.html",
+	controllerAs: 'vm'
+})
 .when("/main", {
 	controller: 'MainController',
     templateUrl : "/assignments/views/main.html",
@@ -62,6 +67,22 @@ app.config(function ($provide) {
             		message: "Unexpected Error Occured. Please Contat System Admin!"
             	    }; 
             errorDataFactory.set(data);
-		    $window.location.href = '/assignments/#!/error.html';        };
+		    $window.location.href = '#!error';        
+		    };
     });
+});
+
+app.run(function($rootScope) {
+    //Should below code be using rootScope or localStorage.. Check which one is better and why.
+    if (window.sessionStorage["userDetails"]) {
+    	$rootScope.mainHeader = {};    	
+		$rootScope.normalHeader = true;
+		$rootScope.errorHeader = false; 
+        $rootScope.userDetails = JSON.parse(window.sessionStorage["userDetails"]);
+        window.location.href = "#!main";
+    }
+    else{
+        window.location.href = "#!login";
+    }
+
 });

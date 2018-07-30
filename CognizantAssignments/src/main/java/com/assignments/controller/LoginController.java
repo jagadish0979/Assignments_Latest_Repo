@@ -1,7 +1,5 @@
 package com.assignments.controller;
 
-import javax.security.auth.login.LoginException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.assignments.domain.LoginModel;
 import com.assignments.domain.Result;
+import com.assignments.exception.DecodingException;
+import com.assignments.exception.LoginException;
 import com.assignments.service.LoginService;
 
 /**
@@ -34,13 +34,16 @@ public class LoginController {
 	private LoginService loginService;
 
 	@PostMapping(value = "/doLogin", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Result> doLogin(@RequestBody LoginModel loginModel) throws LoginException, Exception {
+	public ResponseEntity<Result> doLogin(@RequestBody LoginModel loginModel) throws LoginException, DecodingException {
 		logger.info("Trying to login using userName [ " + loginModel.getUserName() + " ] and password [ "
 				+ loginModel.getPassword() + " ]");
-		if (loginService.validateLogin(loginModel)) {
+		loginModel = loginService.validateLogin(loginModel);
+		if (loginModel != null) {
 			Result result = new Result();
 			result.setMessage("Success");
 			result.setUrl("/main");
+			result.setUserName(loginModel.getUserName());
+			result.setFullName(loginModel.getFullName());
 			return new ResponseEntity<Result>(result, HttpStatus.OK);
 		} else
 			throw new LoginException(env.getProperty("error.login.invalid"));

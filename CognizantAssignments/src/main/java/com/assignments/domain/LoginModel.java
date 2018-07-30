@@ -7,6 +7,7 @@ package com.assignments.domain;
 public class LoginModel {
 	private String userName;
 	private char[] password;
+	private String fullName;
 	/**
 	 * @return the userName
 	 */
@@ -30,6 +31,18 @@ public class LoginModel {
 	 */
 	public void setPassword(char[] password) {
 		this.password = password;
+	}
+	/**
+	 * @return the fullName
+	 */
+	public String getFullName() {
+		return fullName;
+	}
+	/**
+	 * @param fullName the fullName to set
+	 */
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	
